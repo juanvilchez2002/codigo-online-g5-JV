@@ -18,13 +18,20 @@
             <label for="name">
                 Nombre: 
             </label>
-            <input type="text" id="name" placeholder="Ej. Juan Alberto">
+            <input 
+                type="text" 
+                id="name" 
+                placeholder="Ej. Juan Alberto"                
+                minlength="2"
+                maxlength="10"
+            >
             <br>
             <label for="apellidos">Apellidos: </label>
             <input 
                 type="text"
                 placeholder="Ej. Vilchez Huarcaya"
                 id="apellidos"
+                pattern="[A-Z]{1,}"
             >
             <br>
             <label for="email" >Correo: </label>
@@ -37,15 +44,17 @@
             <label for="pass">Contraseña: </label>
             <input 
                 type="password"
-                placeholder="h1hasd"
+                placeholder="6 carácteres mínimo"
                 id="pass"
             >
             <br>
             <label for="edad">Edad</label>
             <input 
                 type="number"
-                placeholder="Ej. 18"
+                placeholder="Ej. 25"
                 id="edad"
+                min=18
+                max=140
             >
             <br>
             <!-- uso de radio button-->
@@ -100,7 +109,11 @@
             <label for="">Biografía:</label>
             <textarea name="" id="" cols="30" rows="10" style="resize:none"></textarea>
             <br>
-            <button accesskey="e">Enviar</button>
+            <input type="submit" value="Enviar">
+            <br>
+            <input type="reset">
+            <br>
+            <button>Click</button>
         </form>
        </section>
    </main>
