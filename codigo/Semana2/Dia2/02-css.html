@@ -13,32 +13,99 @@
             color: steelblue;
             font-family: Arial;
         }
+        footer{
+            background-color: lightgreen;
+        }
     </style>
+    <!-- 
+        linkeando la hoja css
+        esta manera es la idea ya que separamos todo y podemos
+        reutilizarlo en otro documentos html
+    -->
+    <link rel="stylesheet" href="./02.css.css">
 </head>
 <body>
     <header>
-        <h1 style="color: blue; background: lightcoral;">
+        <h1 
+        style="color: blue; background: lightcoral;" 
+        class="titulo1"
+        >
             Estilos CSS
         </h1>
     </header>
     <main>
         <section>
             <h2>Articulos</h2>
-            <article>
+            <article class="rojo bordeazul">
                 <h3>Vacunaton</h3>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque consectetur itaque error ipsum non soluta.</p>
             </article>
-            <article>
+            <article id="importante">
                 <h3>Chalaca de Tapia</h3>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae, nesciunt.</p>
             </article>
         </section>
     </main>
     <footer>
-        <section>
-            <h2>
+        <section class="rojo">
+            <h2 class="sub">
                 Contacto
             </h2>
+            <p>
+                Lorem ipsum dolor sit amet.
+            </p>
+            <!-- lista desordenada -->
+            <ul>
+                <li>
+                    pescado
+                </li>
+                <li>
+                    cebolla
+                </li>
+                <li>
+                    limón
+                </li>
+                <li>
+                    apio
+                </li>
+                <li>
+                    culantro
+                </li>
+                <li>
+                    aji
+                </li>
+                <li>
+                    camote
+                </li>
+                <li>
+                    sal
+                </li>
+            </ul>
+
+            <!-- lista ordenada -->
+            <ol>
+                <li>
+                    Interstellar
+                </li>
+                <li>
+                    Dune
+                </li>
+                <li>
+                    Star Wars
+                </li>
+                <li>
+                    Legeng
+                </li>
+                <li>
+                    Hachiko
+                </li>
+                <li>
+                    2012
+                </li>
+                <li>
+                    Guia del Viajero Intergalactico
+                </li>
+            </ol>
         </section>
     </footer>
 </body>

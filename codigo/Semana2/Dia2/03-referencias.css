@@ -1,0 +1,43 @@
+ /*
+    etiquetas, .clases, #id
+ */
+h1, article{
+    text-decoration: underline;
+}
+
+/* 
+    todos los p que sean hijos dentro de un article 
+    en cualquier nivel (hjos nietos etc)
+*/
+article p{
+    background-color: aquamarine;
+}
+
+/*
+    hace referencia a los primeros hijos (no nietos), 
+    debe de tener la sgte estructura ol>li
+*/
+ol > li {
+    color: rebeccapurple;
+}
+
+article > p{
+    color: red;
+}
+
+#caja > span{
+    background-color: yellowgreen;
+}
+
+/* PSEUDOCLASES */
+
+/* nth-of-type(número o un indicador) */
+/*impares*/
+tr:nth-of-type(odd){
+    background-color: chocolate;
+}
+
+/*pares*/
+tr:nth-of-type(even){
+    background-color: greenyellow;
+}
