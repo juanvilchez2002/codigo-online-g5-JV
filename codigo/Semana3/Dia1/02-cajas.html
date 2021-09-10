@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+            operador resert "*", elimina los estilos prederminadosde todos los 
+            elementos
+        */
+
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            border: 1px solid blue;
+        }
+
+        /*
+            le colocamos un tamaño de ancho de 300px y en el navegador nos muestra 324px
+            lo que hace es sumar el ancho + 2 padding + 2 border, esto es 
+            por defecto.
+            Si usamos el box-sizing puede cambiar el calculo:
+            border-box es una de ellas y señala q el tamaño q indiquemos debe
+            ser respetado y debe incluir contenido, padding y borde
+        */
+        h1{
+            padding: 10px;
+            margin: 5px;
+            border: 2px solid red;
+            width: 300px;
+        }
+
+        section:nth-of-type(1){
+            width: 250px;
+            /* 
+                no se recomienda el uso de inline-block, ya que genera
+                espacios que no se puede modificar (o es trabajoso)
+            */
+            display: inline-block;
+        }
+
+        section:nth-of-type(2){
+            width: 200px;
+            display: inline-block;
+        }
+
+        span{
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>
+            Titulo
+        </h1>
+        <h2>
+            Subtitulo
+        </h2>
+    </header>
+    <main>
+        <section>
+            <h2>
+                Titulo Seccion 1
+            </h2>
+            <p>
+                Lorem ipsum dolor sit <span>amet</span> consectetur adipisicing.
+            </p>
+        </section>
+        <section>
+            <h2>
+                Titulo Seccion 2
+            </h2>
+        </section>
+    </main>
+</body>
+</html>

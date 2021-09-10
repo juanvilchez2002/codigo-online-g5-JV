@@ -1,0 +1,28 @@
+*{  
+    /*
+        el * hace mencion a todos los elementos
+    */
+    border: 1px solid red;
+}
+h1{
+    color: peru;
+}
+h2{
+    /* Hexadecimal, en pares */
+    /* color: #RR GG BB */
+    color: #999999;
+}
+h3{
+    /* RGB, 0 a 255 cada color */
+    color: rgb(240, 30,168);
+}
+p{
+    /* Hue, Saturation, Lightness */
+    /* Matiz, Saturación e iluminación */
+    /* Grados, Porcentaje, Porcentaje */
+    background-color: hsl(100, 100%, 70%);
+}
+header{
+    width: 500px;
+    height: 200px;
+}
