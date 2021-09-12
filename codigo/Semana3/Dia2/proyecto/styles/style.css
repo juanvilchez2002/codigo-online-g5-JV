@@ -7,7 +7,12 @@
           
     border: 1px solid blue; 
     */  
+    border: 1px solid blue; 
+    /*
+    fuente inicial del proyecto
     font-family: 'Open Sans', sans-serif;
+    */
+    font-family: 'Public Sans', sans-serif;
 }
 
 header{
@@ -122,6 +127,68 @@ button{
 .tarjeta a{
     text-decoration: none;
 }
+
+/*
+    Sección de Planes
+*/
+
+.conte-planes{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 50px;
+    text-align: center;
+}
+
+.plan{    
+    display: flex;
+    justify-content: space-between;
+}
+
+.planes{
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #DEDEDE;
+    width: 100%;
+}
+
+.planes img{
+    width: 260px;
+}
+
+.planes *{
+    margin: 20px 0;
+}
+
+.planes p:nth-of-type(5){
+    color: #5C5C5C;
+}
+
+.titulo-planes, .descripcion{
+    margin: 30px 0;
+    color: #5C5C5C;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
     números enteros pares usamos even
