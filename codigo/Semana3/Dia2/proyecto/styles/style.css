@@ -7,7 +7,7 @@
           
     border: 1px solid blue; 
     */  
-    border: 1px solid blue; 
+    
     /*
     fuente inicial del proyecto
     font-family: 'Open Sans', sans-serif;
@@ -142,6 +142,7 @@ button{
 .plan{    
     display: flex;
     justify-content: space-between;
+    max-width: 100%;
 }
 
 .planes{
@@ -149,7 +150,7 @@ button{
     border-radius: 10px;
     padding: 10px;
     border: 1px solid #DEDEDE;
-    width: 100%;
+    max-width: 100%;
 }
 
 .planes img{
@@ -157,37 +158,82 @@ button{
 }
 
 .planes *{
-    margin: 20px 0;
+    margin: 30px 0;
 }
+
+.planes p{
+    font-size: 15px;
+}
+
 
 .planes p:nth-of-type(5){
     color: #5C5C5C;
 }
 
-.titulo-planes, .descripcion{
-    margin: 30px 0;
+.planes p:nth-of-type(6){
     color: #5C5C5C;
 }
 
+.detalle-plan{
+    padding: 15px;
+    margin: 0;
+}
 
+.titulo-planes, .descripcion{
+    margin: 30px 0;
+}
 
+.titulo-plan, .descripcion-plan{
+    margin: 10px 0;
+}
 
+.planes .descripcion-plan{
+    font-size: 12px;
+}
 
+.precio{
+    display: flex;
+    justify-content: center;
+    color: #30D7BA;
+}
 
+.precio *{
+    margin: 0;
+}
 
+.plan .precio-cant{    
+    font-size: 50px;
+    font-weight: bold;
+    margin-right: 2px;
+}
 
+.precio-detalle{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
+.precio-detalle .precio-moneda{    
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+}
 
+.precio-detalle .precio-frecuencia{
+    font-size: 10px;
+    font-weight: bold;
+    color: #5C5C5C;
+}
 
+.button-precio{
+    background-color: #03D6F3;
+    width: 250px;
+    height: 50px;
+}
 
-
-
-
-
-
-
-
-
+.planes .button-precio:hover{
+    border: 1px solid black;
+}
 
 
 /*
@@ -208,5 +254,24 @@ button{
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    /*
+        CSS de Planes en MediaQuery
+    */
+
+    .plan{
+        flex-direction: column;
+    }
+
+}
+
+@media screen and (max-width: 1050px){
+     /*
+        CSS de Planes en MediaQuery
+    */
+
+    .planes img{
+        width: 200px;
     }
 }
