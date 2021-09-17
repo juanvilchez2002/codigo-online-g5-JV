@@ -1,0 +1,57 @@
+/*
+    estado 1
+*/
+.cuadrado{
+    width: 250px;
+    height: 250px;
+    border: 1px solid red;
+    background-color: steelblue;
+    /*
+        propiedades de transicion
+    */
+    transition-duration: 1000ms;
+    transition-delay: 500ms;
+    transition-property: all;
+    transition-timing-function: linear;
+}
+
+/*
+    estado 2
+*/
+.cuadrado:hover{
+    background-color: coral;
+    border-radius: 50%;
+
+    /*
+        transform
+    */
+    /*
+        scale en una proporcion (ejeX, ejeY)
+        transform: scale(2,4);
+
+        tanslate, mueve el objeto en el (ejeX, ejeY) */
+        transform: translate(100px, 200px);
+/*
+        rotate, hace girar el objeto en su eje (angulo)
+        transform: rotate(45deg);
+
+        skew, estira el objeto sobre un (angulo)
+        transform: skew(45deg);
+
+    */
+}
+
+#mifoto{
+    width: 400px;
+    /*
+        opacity, otorga opacidad al objeto
+        va de 0 a 1
+    */
+    opacity: 0.5;;
+}
+
+#mifoto:hover{
+    opacity: 1;
+    transition-property: all;
+    transition-duration: 0.5s;
+}
