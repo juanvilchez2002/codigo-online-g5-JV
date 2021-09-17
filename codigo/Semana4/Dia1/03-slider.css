@@ -9,9 +9,9 @@
     /*
         overflow: hidden
         todo lo que sobre sale del padre, va a desaparecer
-        overflow: hidden;
+        
     */
-    
+    overflow: hidden;
 }
 
 .slide{
@@ -37,6 +37,9 @@
 
 .hijo3{
     background-color: cornflowerblue;
+    animation-name: animacion3;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
 }
 
 @keyframes aminacion1{
@@ -71,9 +74,27 @@
         top: 0%;
     }
     70%{
-        top: -100px;
+        top: -100%;
     }
     100%{
-        top: -100px;
+        top: -100%;
+    }
+}
+
+@keyframes animacion3{
+    0%{
+        top: 100%;
+    }
+    66%{
+        top: 100%;
+    }
+    70%{
+        top: 0%;
+    }
+    97%{
+        top: 0%;
+    }
+    100%{
+        top: -100%;
     }
 }
