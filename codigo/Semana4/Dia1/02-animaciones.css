@@ -1,7 +1,7 @@
 .nave{
     width: 150px;
     animation-name: mi_animacion;
-    animation-duration: 9s;
+    animation-duration: 15s;
     animation-iteration-count: infinite;
     animation-timing-function: ease;
 }
