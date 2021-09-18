@@ -1,0 +1,161 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*
+            border: 1px solid red;
+    */
+    
+}
+
+html, 
+body{
+    height: 100%;
+}
+
+.contenedor{
+    padding: 50px;
+    min-width: 700px;
+    max-width: 1200px;
+    min-height: 1000px;
+    margin: 0 auto;
+    /*
+        grid
+    */
+    display: grid;
+    grid-template-columns: repeat(4, minmax(150px, 1fr));
+    grid-template-rows: repeat(4, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.caja{
+    background: #eee;
+    font-size: 48px;
+    color: white;
+    /*
+        ajusta el tamañp de la imagen background
+    */
+    background-size:cover;
+    /*
+        alinea la imagen del background
+    */
+    background-position: center;
+
+    transition-duration: 0.9s;
+
+    /*
+        propiedades de la animación
+    */
+    animation-name: entrada;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-out;
+    /*
+        nimation-fill-mode define que pasa antes de la animación
+        backwards se le dice que la animación se aplique antes
+        de que la animación comience
+    */
+    animation-fill-mode: backwards;
+}
+
+/*
+    adicionando las imagenes a las cajas
+*/
+.caja:nth-of-type(1){
+    background-image: url('../img/tile1.jpg');
+    grid-column: 1/3;
+    grid-row: 1/3;
+
+    animation-delay: 50ms;
+     
+}
+
+.caja:nth-of-type(2){
+    background-image: url('../img/tile2.jpg');
+    grid-column: 3/3;
+    grid-row: 1/2;
+
+    animation-delay: 120ms;
+}
+
+.caja:nth-of-type(3){
+    background-image: url('../img/tile10.jpg');
+    grid-column: 3/3;
+    grid-row: 2/3;
+    
+    animation-delay: 150ms;
+}
+
+.caja:nth-of-type(4){
+    background-image: url('../img/tile11.jpg');
+    grid-column: 4/5;
+    grid-row: 1/3;
+
+    animation-delay: 80ms;
+}
+
+.caja:nth-of-type(5){
+    background-image: url('../img/title18.jpg');
+    grid-column: 1/3;
+    grid-row: 3/4;
+    
+    animation-delay: 300ms;
+}
+
+.caja:nth-of-type(6){
+    background-image: url('../img/tile5.jpg');
+    grid-column: 3/4;
+    grid-row: 3/4;
+    
+    animation-delay: 80ms;
+}
+
+.caja:nth-of-type(7){
+    background-image: url('../img/title19.jpg');
+    grid-column: 4/5;
+    grid-row: 3/4;
+    
+    animation-delay: 400ms;
+}
+
+.caja:nth-of-type(8){
+    background-image: url('../img/title17.jpg');
+    grid-column: 1/5;
+    grid-row: 4/5;
+    
+    animation-delay: 50ms;
+}
+
+/*
+    dandole transoformaciones    
+*/
+
+.caja:hover{
+    box-shadow: 4px 4px 4px  gray;
+    transform: translate(0,5px) scale(1.01);    
+}
+
+
+/*
+    definiendo los fotogramas
+*/
+@keyframes entrada{
+    0%{
+        /*
+            no se van a ver
+        */
+        transform: scale(0);
+    }
+    70%{
+        /*
+            agrandandolo un poco
+        */
+        transform: scale(1.15);
+    }
+    100%{
+        /*
+            lo dejamos sin escala
+        */
+        transform: scale(1);
+    }
+
+}
