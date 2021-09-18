@@ -1,0 +1,231 @@
+*{  
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*
+        lo usamos como guia temporal
+          
+    border: 1px solid blue; 
+    */  
+    
+    /*
+    fuente inicial del proyecto
+    font-family: 'Open Sans', sans-serif;
+    */
+    font-family: 'Public Sans', sans-serif;
+}
+
+header{
+    /*
+        linear-gradient(dirección_grados, color1, color2)
+    */
+    background-image: linear-gradient(45deg, #3DADA4, #C71FE6);
+    color: white;
+}
+
+.contenedor{
+    max-width: 900px;
+    /*
+        margin: 0 auto nos permite centar el contenedor
+        0 seria top y bottom
+        auto seria left y right, navegador lo distribuye
+    */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav ul{
+    display: flex;
+    /*
+        removemos los estilos de viñeta
+    */
+    list-style-type: none;
+    align-items: center;
+}
+
+nav li{
+    margin: 0 5px;
+}
+
+/*
+    pseudo clase :hover se activa cuando el puntero esta
+    encima del elemento
+*/
+button:hover{
+    background-color: white;
+    color: black;
+}
+
+button{
+    background-color: transparent;
+    border: 1px solid white;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 20px;
+    max-height: 40px;
+}
+
+.hero{
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*
+    al h1 y h5 y div dentro de la clase .hero le añado un 
+    margin de 10px
+*/
+.hero h1,h5, div{
+    margin: 10px;
+}
+
+.hero h1{
+    font-size: calc(16px + 2vw);
+    text-align: center;
+}
+.hero img{
+    max-width: 75vw;
+}
+
+/*
+    tarjetas
+*/
+
+.caracteristicas{
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 50px;
+}
+
+.caracteristicas h2{
+    text-align: center;
+}
+
+.tarjetas{
+    display: flex;
+}
+
+.tarjeta{
+    padding: 20px;
+    border-radius: 10px;
+    /*
+        box-shadow(desplazamiento horizontal, desplazamiento vertical, fulminado, color)
+    */
+    box-shadow: 0px 4px 31px rgba(0, 0, 0, 0.15);
+}
+
+.tarjeta *{
+    margin: 5px 0;
+}
+
+.tarjeta img{
+    width: 60px;
+}
+
+.tarjeta a{
+    text-decoration: none;
+}
+
+
+/*
+    números enteros pares usamos even
+    números enteros impares usamos odd
+*/
+
+.tarjeta:nth-of-type(2){
+    background-image: linear-gradient(45deg, #3DADA4, #C71FE6);
+    color: white;
+}
+
+/*
+    CSS del menú
+*/
+
+#check{
+    /*
+        visibility: hidden
+        esconde solo visualmente un elemento, se encuentra en el
+        ODM
+    */
+    visibility: hidden;
+    position: absolute;
+    z-index: -99;
+    /*
+        display: disabled o none
+        no adicionara en el html
+    */
+}
+
+.show-menu-btn, 
+.hide-menu-btn{
+    /*
+        cambia la forma del cursos de flecha a mano
+    */
+    cursor: pointer;
+    font-size: 30px;
+    /*
+        para que no se muestre los iconos
+    */
+    display: none;
+}
+
+.menu{
+    transition-duration: 0.5s;
+}
+
+/*
+    adicionando los mediaqueries
+*/
+
+@media screen and (max-width: 768px) {
+    .tarjetas{
+        flex-direction: column;
+    }
+
+    .tarjeta{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 572px){
+    .menu{
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background-color: #C71FE6;
+        top: 0;
+        flex-direction: column;
+        padding: 100px 0;
+        right: -100%;
+    }
+
+    .menu li{
+        padding: 20px 0;
+        font-size: 24px;
+    }
+
+    .hide-menu-btn{
+        position: absolute;
+        top: 40px;
+        right: 50px;
+    }
+
+    .hide-menu-btn,
+    .show-menu-btn{
+        display: block;
+    }
+
+    /*
+        :checked hace referencia si el check esta activo
+
+        ~ este simbolo hara referencia a los elementos 
+        despúes de check en la estructura, en este caso, menu
+    */
+    #check:checked ~ .menu{
+        right: 0;
+    }
+}
