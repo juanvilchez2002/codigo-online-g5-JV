@@ -1,0 +1,51 @@
+/*
+    reseto de valores a 0
+*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetiva, sans-serif;
+}
+
+/*
+    reseteamos la apariencia de los hipervinculos
+*/
+a{
+    color: gray;
+    text-decoration: none;
+}
+
+.header{
+    border-bottom: 2px solid #eee;
+    display: flex;
+    align-items: center;
+}
+
+.logo img{
+    width: 32px;
+    margin: 20px;
+}
+
+input{
+    height: 36px;
+    border-radius: 4px;
+    background-color: #efefef;
+    color: gray;
+    border: 1px solid transparent;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 20px;
+    padding: 0 10px;
+    flex-grow: 1;
+}
+
+.icons{
+    display: flex;
+    align-items: center;
+}
+
+.icons img{
+    width: 25px;
+    margin: 20px;
+}
