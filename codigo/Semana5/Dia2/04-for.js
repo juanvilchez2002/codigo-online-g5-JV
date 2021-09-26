@@ -14,7 +14,7 @@ let ropa =["Bufanda", "Camisa", "Guantes", "Jeans"];
 
 for(let i=0; i<ropa.length; i++){
     console.log(`Ropa ${i+1}: ${ropa[i]}`);
-}
+}222
 
 /*
 
