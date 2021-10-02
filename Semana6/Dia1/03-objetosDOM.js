@@ -51,3 +51,88 @@ miCaja.innerHTML = "<h2>Titulo Caja</h2>";
 //modificar estilo
 miCaja.style.backgroundColor = "purple";
 miCaja.style.color = "white";
+
+//obtener elementos por su nombre de clase
+let misItems = document.getElementsByClassName("lista_item");
+
+console.log(misItems);
+
+//Array.from(htmlCollection) crea un arreglo
+let arregloItems = Array.from(misItems);
+
+console.log(arregloItems);
+
+//anotación importante: el forEach, Filter, Map, Find la función
+//con la q se trabaja, se puede obtener el item y el indice
+//forEach(function(item, index_item, arreglo))
+arregloItems.forEach(function(item, index, arreglo){
+    item.style.backgroundColor = "skyblue";
+    item.innerHTML = `Patata ${index}`;
+    console.log("Mostrando el :",arreglo);
+});
+
+let frutas = [
+    "piña",
+    "fresa",
+    "maracuya"
+]
+
+//array.forEach(function(item_actual, posición, propio_arreglo))
+frutas.forEach(function(fru, ind, conj){
+    console.log(fru);
+    console.log(ind);
+    console.log(conj);
+});
+
+//obtener element de diferentes maneras
+//los querySelector y querySelectorAll funcionan de la misma manera
+//que los selectores en CSS
+let miTexto = document.querySelector("#texto"); 
+
+console.log(miTexto);
+
+//querySeletorAll me da un NodeList
+//un NodeList lo puedo tratar como un arreglo
+let boxes = document.querySelectorAll(".box");
+
+console.log(boxes);
+
+boxes.forEach(function(bx){
+    bx.innerHTML = `<p> soy un parrafo</p>`
+})
+
+//crear elementos
+let series = [
+    "Squid Game",
+    "Pasión de Gavilanes",
+    "Dark",
+    "Billions",
+    "GOT",
+    "Suits",
+    "Mr. Robot",
+    "House of Dragons",
+    "Chernobyl",
+    "Breaking Bad"
+];
+
+let divContenido = document.getElementById("contenido");
+
+//document.createElement -> recibe el nombre de una etiqueta
+//en el ejemplo se crea una lista desordenada
+let listas = document.createElement("ul");
+
+console.log(divContenido);
+
+//appendChild adiciona un contenido como hijo
+//push a un elemento ya existente
+divContenido.appendChild(listas);
+
+let textLI = "";
+
+series.forEach(function(serie){
+    textLI = textLI + `<li>${serie}</li>`
+});
+
+console.log(textLI);
+
+listas.innerHTML = textLI;
