@@ -107,25 +107,26 @@ let series = [
     "Pasión de Gavilanes",
     "Dark",
     "Billions",
-    "GOT",
+    "Got",
     "Suits",
     "Mr. Robot",
-    "House of Dragons",
+    "House of dragons",
     "Chernobyl",
-    "Breaking Bad"
+    "Breaking Bad",
+    "Lupin",
 ];
 
 let divContenido = document.getElementById("contenido");
 
 //document.createElement -> recibe el nombre de una etiqueta
 //en el ejemplo se crea una lista desordenada
-let listas = document.createElement("ul");
+let lista = document.createElement("ul");
 
 console.log(divContenido);
 
 //appendChild adiciona un contenido como hijo
 //push a un elemento ya existente
-divContenido.appendChild(listas);
+divContenido.appendChild(lista);
 
 let textLI = "";
 
@@ -135,4 +136,18 @@ series.forEach(function(serie){
 
 console.log(textLI);
 
-listas.innerHTML = textLI;
+lista.innerHTML = textLI;
+
+//adicionando una imagen
+let imagen = document.createElement("img");
+
+divContenido.appendChild(imagen);
+
+//setAttribute("nombre_atr", "valor_atr")
+imagen.setAttribute("src", "https://picsum.photos/200/300")
+
+//clases de CSS
+//a un elemento le podemos aplicar varias clases
+//add("nombreclase")
+
+lista.classList.add("resaltado")
