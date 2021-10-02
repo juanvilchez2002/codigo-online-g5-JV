@@ -401,3 +401,44 @@ let peliculas = [
       "title": "Batman: Death in the Family"
     }
   ]
+
+
+/**
+ *  1. Que datos necesito?
+ *  Nro Orden
+ *  Id
+ *  Nombre
+ *  Año de lanzamiento
+ *  idioma
+ * 
+ *  2. De donde obtengo los datos?
+ *  De las propiedades del arreglo:
+ *  indice del arreglo
+ *  id = Id
+ *  nombre = title
+ *  año de lamzamiento = release_date
+ *  idioma = original_language
+ * 
+ *  3. Los datos estan en el formato que necesito?
+ *  no, hay q convertirlos a algo que entienda el navegador
+ * 
+ *  4. Como lo convertimos?
+ *  innerHTML, appendChild
+ *   
+ */
+
+
+//creamos una variable que reprente a tbody
+let tbody = document.getElementById("tbody");
+
+//adicioamos la etiqueta
+peliculas.forEach(function(peli, indice){
+    let tr = document.createElement("tr");
+    tr.innerHTML = `<td>${indice + 1}</td>
+                    <td>${peli.id}</td>
+                    <td>${peli.title}</td>
+                    <td>${peli.release_date}</td>
+                    <td>${peli.original_language}</td>`;
+    
+    tbody.appendChild(tr);
+})

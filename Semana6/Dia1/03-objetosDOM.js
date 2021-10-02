@@ -148,6 +148,9 @@ imagen.setAttribute("src", "https://picsum.photos/200/300")
 
 //clases de CSS
 //a un elemento le podemos aplicar varias clases
-//add("nombreclase")
+//classList.add("nombreclase")
 
-lista.classList.add("resaltado")
+lista.classList.add("resaltado");
+lista.classList.add("redondeado");
+// lista.classList.add("verdecito");fdgdfg
+lista.classList.remove("resaltado");
