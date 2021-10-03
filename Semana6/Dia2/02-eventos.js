@@ -66,4 +66,50 @@ btnVer.addEventListener("click", function(){
     }else{
         miInput.setAttribute("type","password");  
     }
+});
+
+//capturar eventos
+
+//creando elemento hipervinculo
+let irAGoogle = document.createElement("a");
+
+//le adicionamos un atributo
+irAGoogle.setAttribute("href", "https://www.google.com");
+
+//adicionando texto al hipertexto
+irAGoogle.innerHTML = "Ir a Google";
+
+//adicionarlo a divContenido
+divContenido.appendChild(irAGoogle);
+
+/**
+ * capturar el evento con addEventListener
+ */
+
+irAGoogle.addEventListener("click", function(evento){
+    //preventDefault() -> previene la acción por defecto de un evento
+    evento.preventDefault();
+    console.log(evento);
+})
+
+//capturó primero el formulario
+let miFormulario = document.getElementById("formulario");
+
+//capturamos el evento de submit
+//submit es la accción de enviar datos
+miFormulario.addEventListener("submit", function(evento){
+    evento.preventDefault();
+    console.log("Submiiit¡¡¡¡");
+    //vamos a hacer envios de datos con JS
+    console.log(miFormulario.nombres.value);//muestra el valor del input nombre
+    
+    //todo lo que se obtiene de un 
+    let nuevoUsuario = {
+        //obtener los datos de los input
+        //formulario.nombre_input.value
+        nombres: miFormulario.nombres.value,
+        apellido: miFormulario.apellidos.value
+    }
+
+    console.log(nuevoUsuario);
 })
