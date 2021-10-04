@@ -87,7 +87,10 @@ body{
 }
 
 .carrito{
-  width:25%;
+  /*
+    valor inicial de width es 25%
+  */
+  width:30%;
   background-color: var(--color-bg-secundario);
   color:var(--color-terciario);
   padding:30px;

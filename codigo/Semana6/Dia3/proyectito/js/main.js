@@ -61,3 +61,80 @@ let listaPlatillos = [
  */
 
 //lo ponen el discord
+
+
+console.log(listaPlatillos.length);
+
+//creando un valor donde se guardara el monto total a pagar
+let costoOrden = 0;
+
+//capturando la referencia a la etiqueta main "contenido"
+let mainContenido = document.getElementById("contenido");
+
+//creando un bucle para adicionar los productor
+listaPlatillos.forEach(function(lista){
+    //creando la etiqueta div.tarjeta
+    let divTarjeta = document.createElement("div");
+    //adicionando atributos al div.tarjeta
+    divTarjeta.setAttribute("class","tarjeta");
+
+    //creando la etiqueta div.imagen
+    let divImagen = document.createElement("div");
+    //adicionando atributos al div.imagen
+    divImagen.setAttribute("class", "imagen");
+    //creando la etiqueta img
+    let imgTarjeta = document.createElement("img");
+    imgTarjeta.setAttribute("src",`${lista.imagen}`);
+    //adicionando la etiqueta img a div.imagen
+    divImagen.appendChild(imgTarjeta);
+    //adicionando div.imagen a div.tarjeta
+    divTarjeta.appendChild(divImagen);
+    //dicioando div.tarjeta a main.contenido
+    mainContenido.appendChild(divTarjeta);
+
+    //creando la etiqueta div.texto
+    let divTexto = document.createElement("div");
+    //adicionando atributos al div.texto
+    divTexto.setAttribute("class","texto");
+    //creando h4
+    let nombrePlato = document.createElement("h4");
+    //adicionando texto en h4
+    nombrePlato.innerHTML = `${lista.nombre}`;
+    //adicionando h4 a div.texto
+    divTexto.appendChild(nombrePlato);
+    //creando una etiqueta p
+    let nombreDesc = document.createElement("p");
+    //adicionando la descripción en la etiqueta p
+    nombreDesc.innerHTML = `${lista.descripcion}`;
+    //adicionando p a div.texto
+    divTexto.appendChild(nombreDesc);
+    //creando div.precio
+    let divPrecio = document.createElement("div");
+    //dandole atributos a divPrecio
+    divPrecio.setAttribute("class", "precio");
+    //creando etiqueta span
+    let spanPrecio = document.createElement("span");
+    //adicionando texto a span
+    spanPrecio.innerHTML = `S/. ${lista.precio}`;
+    //adicionando span a divPrecio
+    divPrecio.appendChild(spanPrecio);
+    //creando la etiqueta button
+    let btnAgregar = document.createElement("button");
+    //adicionando atributos a button
+    btnAgregar.setAttribute("class", "btn-agregar");
+    //adicionando texto a button
+    btnAgregar.innerHTML = "Agregar";
+    //adicionando el button a divTexto
+    divPrecio.appendChild(btnAgregar);
+
+    //adicionando divPrecio a divTexto
+    divTexto.appendChild(divPrecio);
+
+    //adicionando divTexto a divTarjeta
+    divTarjeta.appendChild(divTexto);
+
+
+    //adicionando eventos al btnAgregar
+})
+
+let 
