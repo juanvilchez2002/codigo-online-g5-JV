@@ -135,6 +135,10 @@ listaPlatillos.forEach(function(lista){
 
 
     //adicionando eventos al btnAgregar
+
 })
 
-let 
+//se leccionando a todos los elementos con clase "btn-agregar"
+let btnAgregarP = document.getElementsByClassName("btn-agregar");
+
+console.log(btnAgregarP);
