@@ -1,4 +1,5 @@
 //GET
+//FETCH permite hacer una petición y obtener una respuesta
 fetch("https://reqres.in/api/users?page=2")
 //el fetch funciona con Promise
 .then((resp)=>{
