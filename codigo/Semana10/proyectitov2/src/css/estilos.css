@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*
+        temporal
+    */
+    border: .5px solid gray;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.contenedor{
+    display: flex;
+    height: 100vh;
+}
+
+.aplicacion{
+    width: 70%;
+    height: 100%;
+    background-color: #F5F5F6;
+}
+
+.boleta{
+    width: 30%;
+    height: 100%;
+    background-color: #35373E;
+}
+
+.principal{
+    display: flex;
+    height: 100%;
+}
+
+nav {
+    height: 100%;
+    width: 20%;
+    min-width: 200px;
+    padding: 20px;
+}
+
+main{
+    height: 100%;
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /*
+        no se define la cantidad de filas, xq no se
+        sabe cuando habra
+    */
+    grid-auto-rows: 300px;
+    padding: 10px;
+    /*
+        separa elementos del grid
+    */
+    gap: 10px;
+}
+
+.producto{
+    display: flex;
+    flex-direction: column;
+}
+
+.img-top{
+    width: 100%;
+    border-radius: 5px;
+}
+
+.text-botton{
+    padding: 10px;
+}
+.text-botton > *{
+    margin: 5px 0;
+}
