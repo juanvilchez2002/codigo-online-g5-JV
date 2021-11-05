@@ -4,7 +4,7 @@ import axios from "axios";
 //conjunto de funciones para hacer peticiones
 
 //variable que almacena la URL de mockapi
-const URL = "https://616b5ec116c3fa0017171696.mockapi.io/productos";
+const URL = `${process.env.REACT_APP_API}productos`;
 
 const obtenerProductos = async() =>{
     try {
@@ -16,5 +16,28 @@ const obtenerProductos = async() =>{
     }
 };
 
+//función que nos permita crear un nuevo producto
+//recibira como argumento el nuevo producto
+const crearProducto = async(nuevoProducto)=>{
+    try {
+        //creamos las cabeceras
+        const headers = {
+            "Content-Type": "application/json"
+        }
+
+        //axios siempre me va devolver la propiedad
+        //data, donde esta la respuesta del
+        //serviodor axios cuando hace POST, 
+        //PUT necesita no solo la URL va necesitar
+        //los headers y la data
+        //axios.post(URL, objCrear, {headers})
+
+        const {data} = await axios.post(URL, nuevoProducto, {headers});
+        return data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 //exportar la función para ser usada en otros archivos
-export {obtenerProductos}
+export {obtenerProductos, crearProducto}
