@@ -39,5 +39,19 @@ const crearProducto = async(nuevoProducto)=>{
     }
 }
 
+//funcion para obtener el producto por id, que se usara
+//para editar producto
+
+const obtenerProductoPorId = async(id) =>{
+    try {
+        //concatenamos la URL con el id para obtener
+        //el producto
+        const {data} = await axios.get(`${URL}/${id}`)
+        return data
+    } catch (error) {
+        throw error;
+    }
+}
+
 //exportar la función para ser usada en otros archivos
-export {obtenerProductos, crearProducto}
+export {obtenerProductos, crearProducto, obtenerProductoPorId}

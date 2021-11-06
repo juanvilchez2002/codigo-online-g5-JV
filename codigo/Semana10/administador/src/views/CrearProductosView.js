@@ -1,5 +1,8 @@
 import { useState } from "react";
-import FormProducto from "../components/FormProducto"
+import FormProducto from "../components/FormProducto";
+import {useNavigate} from "react-router-dom"
+import { crearProducto } from "../services/productosServices";
+import Swal from "sweetalert2"
 
 export default function CrearProductosView() {
 
@@ -13,13 +16,16 @@ export default function CrearProductosView() {
         precio:0
     });
 
+    //instanciamos useNavigate
+    const navigate = useNavigate();
+
     /**
      * creamos una función para poder modificar 
      * el estado value
      */
 
     const actualizarInput = (e)=>{
-        console.log(e.target.name, e.target.value);
+        console.log(e, e.target.name, e.target.value);
         //usando el setValue para actualizar
         //pasamos un objeto y spread de value que
         //es un objeto
@@ -29,11 +35,48 @@ export default function CrearProductosView() {
             [e.target.name]: e.target.value,
         });
     }
+
+    //creamos una función para grabar
+    const manejarSubmit = async (e) =>{
+        //evitamos que la pagina se recarge
+        e.preventDefault();
+
+        //siempre intenten indicar al usuario que 
+        //esta pasando o que ha ocurrido
+        try {
+            await crearProducto(value);
+            console.log("Producto Nuevo - Creado");
+
+            //creando un mensaje de exito
+            //es un await
+            await Swal.fire({
+                position: 'top-center',
+                icon: 'success',
+                title: 'Éxito',
+                text: 'El producto ha sido creado¡¡¡¡',
+                //es para que no me muestre un boton de cierre
+                showConfirmButton: false,
+                timer:2000
+              })
+
+            //despues de crear el producto se hace
+            //un navigate a la ListaProductoView
+            //home
+            navigate("/");
+
+        } catch (error) {
+            console.log(error);
+        }
+
+    };
+
+
     return (
         <div>
             <FormProducto 
                 value={value} 
                 actualizarInput={actualizarInput}
+                manejarSubmit={manejarSubmit}
             />
         </div>
     )

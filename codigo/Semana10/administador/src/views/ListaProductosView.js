@@ -3,6 +3,8 @@
 import {useState, useEffect} from "react";
 //importando el servicio para mostrar los productos
 import { obtenerProductos } from "../services/productosServices";
+//Link es un equivalente a <a></a>
+import { Link } from "react-router-dom";
 
 
 export default function ListaProductosView() {
@@ -37,6 +39,9 @@ export default function ListaProductosView() {
         <div>
             <h1>
                 Productos Registrados
+                <Link to="/crearproducto" className="btn btn-primary mx-2">
+                    Crear Producto    
+                </Link>
             </h1>
             <table className="table">
                 <thead>
@@ -57,7 +62,7 @@ export default function ListaProductosView() {
                 </thead>
                 <tbody>
                     {
-                        productos.map(({nombre, descripcion, precio}, i)=>(
+                        productos.map(({nombre, descripcion, precio, id}, i)=>(
                             <tr key={i}>
                                 <td>
                                     {nombre}
@@ -69,6 +74,11 @@ export default function ListaProductosView() {
                                     {precio}
                                 </td>
                                 <td>
+                                    <Link className="btn btn-info" 
+                                    to={`/editarproducto/${id}`}
+                                >
+                                        Editar
+                                    </Link>
                                 </td>
                             </tr>
                         ))
