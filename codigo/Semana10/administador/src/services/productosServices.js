@@ -53,5 +53,41 @@ const obtenerProductoPorId = async(id) =>{
     }
 }
 
+//función que nos permitira actualizar un producto
+//
+
+const editarproductoPorId = async (id, objProd) =>{
+    try {
+        //para actualizar datos es necesario
+        //usar las cabeceras
+        const headers = {
+            "Content-Type": "application/json",
+        };     
+        //envio la actualización a mockapi   
+        await axios.put(`${URL}/${id}`, objProd, {headers});
+        return;//envia un revolve
+    } catch (error) {        
+        throw error;
+    }
+}
+
+//función para eliminar producto
+const eliminarProuducto = async (id) =>{
+    try {
+        await axios.delete(`${URL}/${id}`)
+        return "Producto Eliminado"
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
 //exportar la función para ser usada en otros archivos
-export {obtenerProductos, crearProducto, obtenerProductoPorId}
+export {
+    obtenerProductos, 
+    crearProducto, 
+    obtenerProductoPorId, 
+    editarproductoPorId, 
+    eliminarProuducto
+
+}

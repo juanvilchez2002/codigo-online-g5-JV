@@ -4,6 +4,10 @@ import {useNavigate} from "react-router-dom"
 import { crearProducto } from "../services/productosServices";
 import Swal from "sweetalert2"
 
+//basicamente es una ariable global que no
+//esta definida
+let imagen;
+
 export default function CrearProductosView() {
 
     /**
@@ -70,13 +74,21 @@ export default function CrearProductosView() {
 
     };
 
+    //funcion que maneja la imgane
+    const manejarImagen = (e) =>{
+        e.preventDefault();
+        console.log(e.target.files);
+        imagen = e.target.files[0];
+        console.log(imagen);
+    }
 
     return (
         <div>
             <FormProducto 
                 value={value} 
                 actualizarInput={actualizarInput}
-                manejarSubmit={manejarSubmit}
+                manejarSubmit={manejarSubmit} 
+                manejarImagen={manejarImagen}
             />
         </div>
     )

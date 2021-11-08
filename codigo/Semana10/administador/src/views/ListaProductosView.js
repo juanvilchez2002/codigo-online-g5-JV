@@ -2,10 +2,10 @@
 //importanos useEffect para que se ejecute
 import {useState, useEffect} from "react";
 //importando el servicio para mostrar los productos
-import { obtenerProductos } from "../services/productosServices";
+import { obtenerProductos, eliminarProuducto } from "../services/productosServices";
 //Link es un equivalente a <a></a>
 import { Link } from "react-router-dom";
-
+import Swal from "sweetalert2";
 
 export default function ListaProductosView() {
 
@@ -29,6 +29,36 @@ export default function ListaProductosView() {
         }
     }
 
+    //SweetAlert2 usa promesas
+    //muestra un mensaje para ver si podemos
+    //eliminar un producto
+    const verificarEliminar = async(id) =>{
+        const respuesta = await Swal.fire({
+            icon:"warning",
+            title:"¿Desea eliminar el producto?",
+            text:"Esta acción es irreversible.",
+            showConfirmButton:true,
+            showDenyButton:true,
+            confirmButtonText:"Si, Eliminar",
+            denyButtonText:"No, Cancelar",
+        });
+        console.log(respuesta);
+        //verificando su el usuario ha confirmado
+        //para eliminar productor
+        if(respuesta.isConfirmed){
+            try {
+                await eliminarProuducto(id);
+                Swal.fire({
+                    icon:"success",
+                    title: "Producto Eliminado¡¡"
+                })
+                //actualizamos la lista de productos
+                getProductos();
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }
 
     //usamos el useEffect para que se ejecute al iniciar el proyecto
     useEffect(()=>{
@@ -74,11 +104,22 @@ export default function ListaProductosView() {
                                     {precio}
                                 </td>
                                 <td>
-                                    <Link className="btn btn-info" 
-                                    to={`/editarproducto/${id}`}
+                                    <Link 
+                                        className="btn btn-info me-2" 
+                                        to={`/editarproducto/${id}`}
                                 >
                                         Editar
                                     </Link>
+                                    <buttom 
+                                        className="btn btn-danger"
+                                        onClick={
+                                            ()=>{
+                                                verificarEliminar(id);
+                                            }
+                                        }
+                                    >
+                                        Eliminar
+                                    </buttom>
                                 </td>
                             </tr>
                         ))
