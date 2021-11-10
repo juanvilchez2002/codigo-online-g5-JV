@@ -1,9 +1,24 @@
 import Producto from "./Producto"
 
-export default function Main() {
+//<Main listaPlatillos={listaPlatillos}/>
+//llamo a la función Main
+//Main({listaPlatillos})
+export default function Main({listaPlatillos, anadirACarrito}) {
     return (
         <main>
-            <Producto/>
+            {   /**
+                *  item es c/platillo que esta 
+                *  dentro de la lista, se pasa 
+                *  como props
+                */
+                listaPlatillos.map((item, i)=>(
+                    <Producto 
+                        key={i} 
+                        item={item}
+                        anadirACarrito={anadirACarrito}
+                    />
+                ))
+            }
         </main>
     )
 }

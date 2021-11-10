@@ -1,25 +1,51 @@
 
 
-export default function Producto() {
+export default function Producto({item, anadirACarrito}) {
+    /**
+     * como item es un obj que contiene precio,
+     * id, descripción, stock; se puede 
+     * desestructurar
+     */
+    const {id, nombre, descripcion, precio, imagen}=item;
+
+    const ejecutarCarrito = () =>{
+    //     let objCarrito = {
+    //         id: id,
+    //         nombre: nombre,
+    //         precio: precio
+    //     }
+        let objetoCarrito = {
+            id,
+            nombre,
+            precio
+        }
+        //actualizamos el estado de carrito
+        anadirACarrito(objetoCarrito)
+    }
+    
     return (
         <div className="producto">
             <img 
                 className="img-top" 
-                src="https://picsum.photos/200"
+                src={imagen}
                 alt="imagen"
             />
-            <div className="text-botton">
+            <div className="text-bottom">
                 <h4>
-                    Producto
+                    {nombre}
                 </h4>
                 <p>
-                    Lorem ipsum dolor sit.
+                    {descripcion}
                 </p>
                 <div className="prod-info">
                     <span>
-                        S/. 25.00
+                        S/. {precio}
                     </span>
-                    <button className="btn-agregar">
+                    <button                         className="btn-agregar"
+                        onClick={
+                            ejecutarCarrito
+                        }
+                    >
                         Agregar
                     </button>
                 </div>

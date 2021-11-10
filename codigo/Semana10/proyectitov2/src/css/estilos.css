@@ -4,8 +4,9 @@
     box-sizing: border-box;
     /*
         temporal
+        border: .5px solid gray;
     */
-    border: .5px solid gray;
+    
 }
 
 ul{
@@ -14,19 +15,25 @@ ul{
 
 .contenedor{
     display: flex;
-    height: 100vh;
+    height: 100%;
 }
 
 .aplicacion{
-    width: 70%;
+    width: 80%;
     height: 100%;
     background-color: #F5F5F6;
 }
 
 .boleta{
-    width: 30%;
-    height: 100%;
+    width: 20%;
+    min-height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+    overflow: scroll;
     background-color: #35373E;
+    padding: 20px auto;
+    color: white;
 }
 
 .principal{
@@ -36,21 +43,21 @@ ul{
 
 nav {
     height: 100%;
-    width: 20%;
+    width: 10%;
     min-width: 200px;
     padding: 20px;
 }
 
 main{
     height: 100%;
-    width: 80%;
+    width: 90%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     /*
         no se define la cantidad de filas, xq no se
         sabe cuando habra
     */
-    grid-auto-rows: 300px;
+    grid-auto-rows: 400px;
     padding: 10px;
     /*
         separa elementos del grid
@@ -58,19 +65,39 @@ main{
     gap: 10px;
 }
 
-.producto{
+.producto {
     display: flex;
     flex-direction: column;
+    border-radius: 5px;
+    box-shadow: 0 0 10px gray;
 }
 
-.img-top{
+.img-top {
     width: 100%;
+    height: 60%;
     border-radius: 5px;
 }
 
-.text-botton{
+.text-bottom {
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 40%;
 }
-.text-botton > *{
-    margin: 5px 0;
+
+.text-bottom>* {
+    margin: 2px 0;
+}
+
+.prod-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.prod-info button {
+    background-color: steelblue;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 10px;
 }
