@@ -4,9 +4,12 @@ import { useState, useEffect } from "react";
 //por la URL
 import { useParams } from "react-router-dom";
 import FormProducto from "../components/FormProducto";
-import { obtenerProductoPorId, editarproductoPorId } from "../services/productosServices";
+import { obtenerProductoPorId, editarproductoPorId, subirImagen } from "../services/productosServices";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import Cargando from "../components/Cargando"
+
+let imagen;//por defecto es undefined
 
 export default function EditarProductoView() {
 
@@ -16,6 +19,9 @@ export default function EditarProductoView() {
         descripcion:"",
         precio:0
     })
+
+    //estado para mostrar icono cargando
+    const [loading, setLoading] = useState(false);
 
     //usrParams es un objeto que va a contener todos
     //los parametros que se pase por la URL
@@ -30,6 +36,7 @@ export default function EditarProductoView() {
     //obtenemos el producto por medio del id
     const getProducto = async () => {
         try {
+            
             const prodObtenido = await obtenerProductoPorId(id);
             //el producto obternido de mockapi
             //lo paso a value, donde actualizo
@@ -49,7 +56,33 @@ export default function EditarProductoView() {
      const manejarSubmit = async (e) => {
         e.preventDefault();
         try {
-            await editarproductoPorId(id, value);
+            //verificamos el valor de imagen
+            if(typeof imagen !== "undefined"){
+                
+                //cuando comience el proceso de crear el producto
+                setLoading(true)
+
+                //xq imagen no seria undefined
+                const urlImagenSubida = await subirImagen(imagen);
+                //actualiz el objeto value y a la
+                //vez se actualiza la imagen
+                await editarproductoPorId(id, {...value, imagen:urlImagenSubida});
+
+                //cuando termino de cargar
+                setLoading(false)
+
+            }else{
+                //cuando comience el proceso de crear el producto
+                setLoading(true)
+
+                //actualizo pero sin subir ninguna imagen
+                await editarproductoPorId(id, value);
+
+                //cuando termino de cargar
+                setLoading(false)
+            }
+            
+
             await Swal.fire({
                 icon: "success",
                 title: "Éxito",
@@ -78,6 +111,13 @@ export default function EditarProductoView() {
         });
     }
 
+    //funcion que maneja la imgane
+    const manejarImagen = (e) =>{
+        e.preventDefault();
+        console.log(e.target.files);
+        imagen = e.target.files[0];
+        console.log(imagen);
+    }
 
 
 
@@ -87,16 +127,19 @@ export default function EditarProductoView() {
     }, []);
 
     return (
-        <div>
-            {/**
-             *  enviamos el value actualizado
-             *  y se mostrara en el FormProducto
-             */}
-            <FormProducto 
-                value={value}
-                actualizarInput={actualizarInput}
-                manejarSubmit={manejarSubmit}
-            />
-        </div>
-    )
+        <>
+            {
+                loading===true?(
+                    <Cargando/>
+                ):(
+                    <FormProducto 
+                        value={value} 
+                        actualizarInput={actualizarInput}
+                        manejarSubmit={manejarSubmit} 
+                        manejarImagen={manejarImagen}
+                    />
+                )
+            }
+        </>
+    );
 }

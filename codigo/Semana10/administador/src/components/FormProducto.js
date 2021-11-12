@@ -80,12 +80,24 @@ export default function FormProducto({value, actualizarInput, manejarSubmit, man
                     <label className="form-label">
                         Imagen:
                     </label>
-                    <input
+
+
+                    {/*<input
                         type="file" 
                         className="form-control"
                         ref={inputFile}
                         onChange={(e)=>{
                             manejarImagen(e)
+                        }}
+                    />*/}
+
+
+                    <input
+                        type="file"
+                        className="form-control"
+                        ref={inputFile}
+                        onChange={(e) => {
+                            manejarImagen(e);
                         }}
                     />
                 </div>

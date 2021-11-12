@@ -1,5 +1,6 @@
 //importaremos datos de mockapi
 import axios from "axios";
+import { storage } from "../config/Firebase";
 
 //conjunto de funciones para hacer peticiones
 
@@ -81,6 +82,29 @@ const eliminarProuducto = async (id) =>{
     }
 }
 
+//subir una imagen
+const subirImagen = (imagen) => {
+    return new Promise((resolve, reject) => {
+        //1, necesita la referencia para indicar donde vamos a guardar el archivo
+        let refStorage = storage.ref(`fotos/${imagen.name}`);
+        let tareaSubir = refStorage.put(imagen);
+
+        tareaSubir.on(
+            "state_changed",
+            () => {}, //ver el progreso
+            (error) => {
+                reject(error);
+            }, //ver si hay error
+            () => {
+                //tareaSubir finalizada
+                tareaSubir.snapshot.ref.getDownloadURL().then((urlImagen) => {
+                    resolve(urlImagen);
+                });
+            }
+        ); 
+    });
+};
+
 
 //exportar la función para ser usada en otros archivos
 export {
@@ -88,6 +112,6 @@ export {
     crearProducto, 
     obtenerProductoPorId, 
     editarproductoPorId, 
-    eliminarProuducto
-
+    eliminarProuducto,
+    subirImagen
 }

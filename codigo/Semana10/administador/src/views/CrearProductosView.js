@@ -1,7 +1,8 @@
 import { useState } from "react";
 import FormProducto from "../components/FormProducto";
 import {useNavigate} from "react-router-dom"
-import { crearProducto } from "../services/productosServices";
+import { crearProducto, subirImagen } from "../services/productosServices";
+import Cargando from "../components/Cargando";
 import Swal from "sweetalert2"
 
 //basicamente es una ariable global que no
@@ -19,6 +20,9 @@ export default function CrearProductosView() {
         descripcion:"",
         precio:0
     });
+
+    //estado para mostrar icono cargando
+    const [loading, setLoading] = useState(false);
 
     //instanciamos useNavigate
     const navigate = useNavigate();
@@ -48,8 +52,20 @@ export default function CrearProductosView() {
         //siempre intenten indicar al usuario que 
         //esta pasando o que ha ocurrido
         try {
-            await crearProducto(value);
+            //cuando comience el proceso de crear el producto
+            setLoading(true)
+
+            //subimos primero la imagen, y obtengo la
+            //url
+            const urlImagenSubida = await subirImagen(imagen);
+            console.log(urlImagenSubida)
+
+            //y le agrego al array
+            await crearProducto({...value, imagen:urlImagenSubida});
             console.log("Producto Nuevo - Creado");
+
+            //cuando termino de cargar
+            setLoading(false)
 
             //creando un mensaje de exito
             //es un await
@@ -83,13 +99,19 @@ export default function CrearProductosView() {
     }
 
     return (
-        <div>
-            <FormProducto 
-                value={value} 
-                actualizarInput={actualizarInput}
-                manejarSubmit={manejarSubmit} 
-                manejarImagen={manejarImagen}
-            />
-        </div>
+        <>
+            {
+                loading===true?(
+                    <Cargando/>
+                ):(
+                    <FormProducto 
+                        value={value} 
+                        actualizarInput={actualizarInput}
+                        manejarSubmit={manejarSubmit} 
+                        manejarImagen={manejarImagen}
+                    />
+                )
+            }
+        </>
     )
 }
