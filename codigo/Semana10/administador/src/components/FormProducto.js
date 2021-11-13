@@ -1,7 +1,7 @@
 //componente
 import { useRef } from "react";
 
-export default function FormProducto({value, actualizarInput, manejarSubmit, manejarImagen}) {
+export default function FormProducto({value, actualizarInput, manejarSubmit, manejarImagen, categorias}) {
     
     //es una referencia
     //va a ser como trabajar como un id interno de 
@@ -102,12 +102,35 @@ export default function FormProducto({value, actualizarInput, manejarSubmit, man
                     />
                 </div>
 
-                <button 
-                    className="btn btn-primary"
-                    type="submit"
-                >
-                    Guardar
-                </button>
+                <div className="mb-3">
+                    <label className="form-label">
+                        Categoria:
+                    </label>
+
+                    <select
+                        value={value.categoria_id}
+                        className="form-select"
+                        name="categoria_id"
+                        onChange={(e)=>{
+                            actualizarInput(e);
+                        }}
+                    >
+                        {
+                            categorias.map((cat, i)=>(
+                                <option value={cat.id} key={i}>
+                                    {cat.nombre}
+                                </option>
+                            ))
+                        }
+                    </select>
+                </div>
+
+                    <button 
+                        className="btn btn-primary"
+                        type="submit"
+                    >
+                        Guardar
+                    </button>
             </form>
         </div>
     )

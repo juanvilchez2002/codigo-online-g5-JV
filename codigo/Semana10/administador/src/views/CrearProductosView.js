@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FormProducto from "../components/FormProducto";
 import {useNavigate} from "react-router-dom"
 import { crearProducto, subirImagen } from "../services/productosServices";
+import { obtenerCategorias } from "../services/categoriaServices";
 import Cargando from "../components/Cargando";
 import Swal from "sweetalert2"
 
@@ -18,11 +19,15 @@ export default function CrearProductosView() {
     const [value, setValue] = useState({
         nombre:"",
         descripcion:"",
-        precio:0
+        precio:0,
+        categoria_id:"1"
     });
 
     //estado para mostrar icono cargando
     const [loading, setLoading] = useState(false);
+
+    //estado de categoria
+    const [categorias, setCategorias] = useState([])
 
     //instanciamos useNavigate
     const navigate = useNavigate();
@@ -98,6 +103,22 @@ export default function CrearProductosView() {
         console.log(imagen);
     }
 
+    //cargamos las categorias al cargar la pagina
+    //y obtener las categorias, a su vez actualizo
+    //el estado de categorias
+    useEffect(() => {
+        const getCategorias = async () =>{
+            try {
+                const catObtenidas = await obtenerCategorias();
+                setCategorias(catObtenidas)
+            } catch (error) {
+                throw error
+            }
+        };
+        getCategorias();
+    }, [])
+
+
     return (
         <>
             {
@@ -109,6 +130,7 @@ export default function CrearProductosView() {
                         actualizarInput={actualizarInput}
                         manejarSubmit={manejarSubmit} 
                         manejarImagen={manejarImagen}
+                        categorias={categorias}
                     />
                 )
             }
