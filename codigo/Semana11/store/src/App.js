@@ -10,25 +10,38 @@ import HomeView from "./views/HomeView"
 import CheckOutView from "./views/CheckOutView"
 import Navegacion from "./components/Navegacion";
 import ProductoDetalleView from "./views/ProductoDetalleView";
+import CarritoContextProvider from "./context/carritoContext";
+import CarritoView from "./views/CarritoView";
+import NotFound from "./views/NotFound";
+
+
 
 export default function App() {
   return (
-        <AuthContextProvider>          
-            {/* aquí dentro del provider puedo poner tanto componentes como rutas */}
-           {/** <LoginView />*/ }
-          <Router>
-            <Navegacion/>
-            <Routes>
-              <Route path="/" element={<HomeView/>}/>
-              <Route path="/login" element={<LoginView/>}/>
-              <Route path="/detalleproducto/:id" element={<ProductoDetalleView/>}/>
-              <Route path="/checkout" element={
-                <PrivateRoute>
-                  <CheckOutView/>
-                </PrivateRoute>
-              }/>
-            </Routes>
-          </Router>
+        <AuthContextProvider>    
+          <CarritoContextProvider>
+              {/* aquí dentro del provider puedo poner tanto componentes como rutas */}
+              {/** <LoginView />*/ }
+              <Router>
+                <Navegacion/>
+                <Routes>
+                  {/**
+                   * cuando quiero poner una pagina de 404, le infico el path="*" y al principio
+                   * 
+                   */}
+                  <Route path="*" element={<NotFound/>}/>
+                  <Route path="/" element={<HomeView/>}/>
+                  <Route path="/login" element={<LoginView/>}/>
+                  <Route path="/detalleproducto/:id" element={<ProductoDetalleView/>}/>
+                  <Route path="/carrito" element={<CarritoView/>}/>
+                 <Route path="/checkout" element={
+                    <PrivateRoute>
+                      <CheckOutView/>
+                    </PrivateRoute>
+                  }/>
+                </Routes>
+              </Router>
+          </CarritoContextProvider>                    
         </AuthContextProvider>
   )
 }
