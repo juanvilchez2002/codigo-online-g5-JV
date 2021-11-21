@@ -13,6 +13,7 @@ import ProductoDetalleView from "./views/ProductoDetalleView";
 import CarritoContextProvider from "./context/carritoContext";
 import CarritoView from "./views/CarritoView";
 import NotFound from "./views/NotFound";
+import ProductosConFiltrosView from "./views/ProductosConFiltrosView";
 
 
 
@@ -34,12 +35,17 @@ export default function App() {
                   <Route path="/login" element={<LoginView/>}/>
                   <Route path="/detalleproducto/:id" element={<ProductoDetalleView/>}/>
                   <Route path="/carrito" element={<CarritoView/>}/>
-                 <Route path="/checkout" element={
+                  <Route path="/productosfiltros">
+                          <Route path="/productosfiltros" element={<ProductosConFiltrosView />} />
+                          <Route path="/productosfiltros/:busqueda" element={<ProductosConFiltrosView />} />
+                    </Route>
+
+                  <Route path="/checkout" element={
                     <PrivateRoute>
                       <CheckOutView/>
                     </PrivateRoute>
                   }/>
-                </Routes>
+                  </Routes>
               </Router>
           </CarritoContextProvider>                    
         </AuthContextProvider>

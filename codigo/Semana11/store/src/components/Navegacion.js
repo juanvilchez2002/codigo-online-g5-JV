@@ -1,8 +1,8 @@
 import { AuthContext } from "../context/authContext"
 import { CarritoContext } from "../context/carritoContext"
-import { useContext } from "react"
+import { useContext, useRef } from "react"
 import {Navbar, Container, Nav, NavLink, NavDropdown} from "react-bootstrap"
-import { Link  } from "react-router-dom"
+import { Link, useNavigate  } from "react-router-dom"
 import NavbarToggle from "react-bootstrap/esm/NavbarToggle"
 //importando el Badge
 import Badge from '@mui/material/Badge';
@@ -15,6 +15,18 @@ export default function Navegacion() {
 
     //obtenermos la cantidad de productos del carrito
     const {carrito} = useContext(CarritoContext);
+
+    //lo que vamos a buscar
+    const refBuscar = useRef();
+
+    //navegador
+    const navigate = useNavigate();
+
+    //función para buscar
+    const manejarBusqueda = ()=>{
+        navigate(`/productosfiltros/${refBuscar.current.value}`)
+    }
+
     //para obtener la cantidad total de carrito usamos reduce
     const totalCarrito = carrito.reduce((total, prod)=>{
         return total+prod.cantidad;
@@ -35,6 +47,13 @@ export default function Navegacion() {
                         >
                             Home
                         </Link>
+                        <Link 
+                            className="nav-link"
+                            to="/productosfiltros"
+                        >
+                            Productos
+                        </Link>
+
                         {
                             user?(
                                 <>
@@ -49,6 +68,15 @@ export default function Navegacion() {
                         }                      
                     </Nav>
                     <Nav>
+                        <div className="d-flex justify-content-between">
+                            <input type="text" placeholder="Buscar producto..." 
+                                className="form-control"
+                                ref={refBuscar}
+                            />
+                            <button className="btn btn-outline-dark" onClick={manejarBusqueda}>
+                                <i className="fas fa-search"></i>
+                            </button>
+                        </div>
                             <Link 
                             className="nav-link"
                             to="/carrito"
