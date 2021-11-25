@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { CarritoContext } from "../context/carritoContext";
 //para obtener los id's de las rutas
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { obtenerProductosPorId } from "../services/productoService";
 //libreria para ampliar la imagen
 import ReactImageMagnify from "react-image-magnify";
@@ -23,6 +23,9 @@ export default function ProductoDetalleView() {
 
     //para obtener las categorias
     const [categoria, setCategoria] = useState("");
+
+    //links
+    const navigate = useNavigate();
 
     //función para ser llamado cuando se realiza la carga
     //de la pgina
@@ -70,6 +73,15 @@ export default function ProductoDetalleView() {
 
         anadirACarrito(nuevoProducto);
     }
+
+    //para comprar
+    const ejecutarCompraAhora = ()=>{
+        anadirACarritoContext();
+        navigate("/checkout")
+    }
+
+    //
+
 
     //ejecutar en el montaje
     useEffect(() => {
@@ -170,7 +182,10 @@ export default function ProductoDetalleView() {
                                                     Añadir a Carrito
                                                 </button>   
                                             </div>
-                                            <button className="btn btn-outline-dark btn-lg mt-2">
+                                            <button 
+                                                className="btn btn-outline-dark btn-lg mt-2"
+                                                onClick={ejecutarCompraAhora}
+                                            >
                                                 Comprar ahora!
                                             </button>
                                         </div>

@@ -14,6 +14,7 @@ import CarritoContextProvider from "./context/carritoContext";
 import CarritoView from "./views/CarritoView";
 import NotFound from "./views/NotFound";
 import ProductosConFiltrosView from "./views/ProductosConFiltrosView";
+import Footer from "./components/Footer";
 
 
 
@@ -46,6 +47,7 @@ export default function App() {
                     </PrivateRoute>
                   }/>
                   </Routes>
+                  <Footer/>
               </Router>
           </CarritoContextProvider>                    
         </AuthContextProvider>
