@@ -15,3 +15,12 @@ let arreglo:Array<String> = [
 let objetos:Object = {};
 let random:any=undefined; //basicamente acepta cualquier tipo
 let random2:unknown={nombre:"Backus"}; //en teoria acepta cualquier cosa menos null o undefined
+
+//funciones
+let sumar = (num1:number, num2:number):number=>{
+    return num1+num2
+}
+
+
+console.log(sumar(10, 13));
+
