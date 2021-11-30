@@ -46,8 +46,8 @@ export default function App() {
                       <CheckOutView/>
                     </PrivateRoute>
                   }/>
-                  </Routes>
-                  <Footer/>
+                </Routes>
+                <Footer/>
               </Router>
           </CarritoContextProvider>                    
         </AuthContextProvider>
