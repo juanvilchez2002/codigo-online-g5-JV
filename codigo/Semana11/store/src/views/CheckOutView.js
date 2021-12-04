@@ -101,17 +101,17 @@ export default function CheckOutView() {
                         }
                             {
                                 //verificar si el total es 0
-                                total > 0? <li className='list-group-item  d-flex justify-content-between'>
-                                    <span className='fw-bold'>
-                                        TOTAL:
-                                    </span>
-                                    <span>
-                                        S/.
-                                        {
-                                            total.toFixed(2)
-                                        }
-                                    </span>
-                                </li>:<li className='list-group-item'>
+                                    total > 0? <li className='list-group-item  d-flex justify-content-between'>
+                                        <span className='fw-bold'>
+                                            TOTAL:
+                                        </span>
+                                        <span>
+                                            S/.
+                                            {
+                                                total.toFixed(2)
+                                            }
+                                        </span>
+                                    </li>:<li className='list-group-item'>
                                     Todavia no ha adicionado ningun producto
                                 </li>
                             }
